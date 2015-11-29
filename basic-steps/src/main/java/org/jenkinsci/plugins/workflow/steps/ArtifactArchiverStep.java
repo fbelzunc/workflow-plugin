@@ -14,7 +14,7 @@ public class ArtifactArchiverStep extends AbstractStepImpl {
 
     private final String includes;
     private String excludes;
-    // TBD: boolean fingerprint = true
+    private boolean fingerprint;
 
     @DataBoundConstructor
     public ArtifactArchiverStep(String includes) {
@@ -27,6 +27,10 @@ public class ArtifactArchiverStep extends AbstractStepImpl {
 
     public String getExcludes() {
         return excludes;
+    }
+
+    public boolean isFingerprint() {
+        return fingerprint;
     }
 
     @DataBoundSetter public void setExcludes(String excludes) {

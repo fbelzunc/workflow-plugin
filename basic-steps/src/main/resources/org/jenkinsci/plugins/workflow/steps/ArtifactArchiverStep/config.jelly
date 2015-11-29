@@ -31,4 +31,7 @@ THE SOFTWARE.
     <f:entry field="excludes" title="Excludes">
         <f:textbox/>
     </f:entry>
+    <f:entry field="fingerprint" title="Fingerprint">
+        <f:checkbox/>
+    </f:entry>
 </j:jelly>

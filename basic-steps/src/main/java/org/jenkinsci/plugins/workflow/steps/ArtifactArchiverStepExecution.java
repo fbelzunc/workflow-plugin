@@ -14,6 +14,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import hudson.tasks.Fingerprinter;
 import jenkins.MasterToSlaveFileCallable;
 import jenkins.util.BuildListenerAdapter;
 
@@ -41,6 +42,10 @@ public class ArtifactArchiverStepExecution extends AbstractSynchronousNonBlockin
     protected Void run() throws Exception {
         Map<String,String> files = ws.act(new ListFiles(step.getIncludes(), step.getExcludes()));
         build.pickArtifactManager().archive(ws, launcher, new BuildListenerAdapter(listener), files);
+
+        if(step.isFingerprint()) {
+            new Fingerprinter(step.getIncludes()).perform(build, ws, launcher, listener);
+        }
         return null;
     }
 
